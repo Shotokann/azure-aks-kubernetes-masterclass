@@ -4,16 +4,16 @@ metadata:
   name: mysql
 spec: 
   replicas: 1
-  selector:
-    matchLabels:
+  selector: #Pod Select Label
+    matchLabels: 
       app: mysql
-  strategy:
-    type: Recreate 
-  template: 
-    metadata: 
-      labels: 
+  strategy: #Strategy for our Deployment
+    type: Recreate
+  template: #Pod Template
+    metadata:
+      labels:
         app: mysql
-    spec: 
+    spec: #Pod Specification
       containers:
         - name: mysql
           image: mysql:5.6
@@ -22,13 +22,13 @@ spec:
               value: dbpassword11
           ports:
             - containerPort: 3306
-              name: mysql    
-          volumeMounts:
+              name: mysql
+          volumeMounts: #Container-level resource
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql    
+              mountPath: /var/lib/mysql
             - name: usermanagement-dbcreation-script
-              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance                                            
-      volumes: 
+              mountPath: /docker-entrypoint-initdb.d #refer to "hub.docker.com/_/mysql" --> search for Initilizing a fresh instance
+      volumes: #Pod-Spec-level resource
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: azure-managed-disk-pvc

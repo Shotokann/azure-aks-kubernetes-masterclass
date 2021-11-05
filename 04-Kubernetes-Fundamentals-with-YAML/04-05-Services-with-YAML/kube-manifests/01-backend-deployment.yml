@@ -4,20 +4,20 @@ metadata:
   name: backend-restapp
   labels:
     app: backend-restapp
-    tier: backend 
+    tier: backend
 spec:
   replicas: 3
-  selector:
+  selector: 
     matchLabels:
       app: backend-restapp
   template:
     metadata:
       labels:
         app: backend-restapp
-        tier: backend 
-    spec: 
-      containers:
+        tier: backend
+    spec:
+      containers: 
         - name: backend-restapp
           image: stacksimplify/kube-helloworld:1.0.0
           ports:
-            - containerPort: 8080        
+            - containerPort: 8080

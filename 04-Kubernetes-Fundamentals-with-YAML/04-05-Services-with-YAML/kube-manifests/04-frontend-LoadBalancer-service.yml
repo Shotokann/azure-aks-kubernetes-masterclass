@@ -1,15 +1,15 @@
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
   name: frontend-nginxapp-loadbalancer-service
   labels:
     app: frontend-nginxapp
-    tier: frontend  
+    tier: frontend
 spec:
-  type: LoadBalancer # ClusterIp, # NodePort
+  type: LoadBalancer #must specify since ClusterIP is dafault
   selector:
     app: frontend-nginxapp
-  ports: 
+  ports:
     - name: http
-      port: 80 # Service Port
-      targetPort: 80 # Container Port
+      port: 80 #Service Port
+      targetPort: 80 #Container Port
