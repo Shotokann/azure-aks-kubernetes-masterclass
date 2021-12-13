@@ -82,7 +82,7 @@ http://<public-ip-of-webserver-app>
 kubectl delete -R -f kube-manifests/
 
 # Delete Resource Group to delete all NodePools and Cluster
-az group delete -n ${AKS_RESOURCE_GROUP}
+az group delete -n $AKS_RESOURCE_GROUP
 
 # Delete Users and Groups in AD
 Group: aksadmins
