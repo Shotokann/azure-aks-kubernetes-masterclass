@@ -1,35 +1,34 @@
+# https://www.terraform.io/docs/configuration/variables.html
+# Input Variables
+# Output Values
+# Local Values (Optional)
+
 # Define Input Variables
-# 1. Azure Location (CentralUS)
-# 2. Azure Resource Group Name 
-# 3. Azure AKS Environment Name (Dev, QA, Prod)
-
-# Azure Location
+# 1. Azure Location
 variable "location" {
+  default = "East US"
+  description = "This defines where all the resources will be created."
   type = string
-  description = "Azure Region where all these resources will be provisioned"
-  default = "Central US"
 }
 
-# Azure Resource Group Name
+# 2. Azure Resource Group Name 
 variable "resource_group_name" {
-  type = string
-  description = "This variable defines the Resource Group"
   default = "terraform-aks"
+  description = "This defines the name of the Resource Group."
+  type = string
 }
 
-# Azure AKS Environment Name
+# 3. Azure AKS Environment Name (Dev, QA, Prod)
 variable "environment" {
-  type = string  
-  description = "This variable defines the Environment"  
-  #default = "dev2"
+  # default = "dev" -provided directly from pipeline
+  description = "This defines the environment."
+  type = string
 }
 
-
-# AKS Input Variables
-
+# V2 Changes - AKS input variables
 # SSH Public Key for Linux VMs
 variable "ssh_public_key" {
-  #default = "~/.ssh/aks-prod-sshkeys-terraform/aksprodsshkey.pub"
+  # default = "REMOVED" -storing ssh key in ADO
   description = "This variable defines the SSH Public Key for Linux k8s Worker nodes"  
 }
 
@@ -43,7 +42,13 @@ variable "windows_admin_username" {
 # Windows Admin Password for k8s worker nodes
 variable "windows_admin_password" {
   type = string
-  default = "P@ssw0rd1234"
+  default = "P@ssw0rdP@ssw0rd"
   description = "This variable defines the Windows admin password k8s Worker nodes"  
 }
 
+# Linux Admin Username
+variable "linux_admin_username" {
+  type = string
+  default = "ubuntu"
+  description = "This variable defines the Linux admin username"
+}

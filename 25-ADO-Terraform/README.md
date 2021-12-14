@@ -167,15 +167,15 @@ Example: https://github.com/stacksimplify/azure-devops-aks-kubernetes-terraform-
 - **Important Note:**  We should not have these files in our git repos for security Reasons
 ```
 # Create Folder
-mkdir $HOME/ssh-keys-teerraform-aks-devops
+mkdir $HOME/ssh-keys-terraform-aks-devops
 
 # Create SSH Keys
-ssh-keygen \
-    -m PEM \
-    -t rsa \
-    -b 4096 \
-    -C "azureuser@myserver" \
-    -f ~/ssh-keys-teerraform-aks-devops/aks-terraform-devops-ssh-key-ububtu \
+ssh-keygen `
+    -m PEM `
+    -t rsa `
+    -b 4096 `
+    -C "azureuser@myserver" `
+    -f $Env:HOMEPATH\.ssh\ssh-keys-terraform-aks-devops\aks-terraform-devops-ssh-key-ubuntu
 
 Note: We will have passphrase as : empty when asked
 
